@@ -51,6 +51,8 @@ void readPoints(const std::string& filename)
 
 void initTime(bdm::OctreeNode<int>*& bdmTree, unibn::Octree<bdm::Point>& unibnTree, int bucketSize, double res[2])
 {
+    // all points range within (-50,50) interval
+    // so main bound is the following
     bdmTree = new bdm::OctreeNode<int>(bdm::Bound(-50,-50,-50,50,50,50),100, bucketSize);
 
     auto start = std::chrono::high_resolution_clock::now();
@@ -116,12 +118,11 @@ int main(int argc, char** argv)
         std::cout << "-----------------------------------\n";
 
         std::cout << "Search time (ms)\n";
-        double radius = 0.01;
+        double radius[4] = {0.01, 0.1, 0.5, 1.0} ;
         print("Radius", 13); print("Bdm", 12); print("Unibn", 12); std::cout<<std::endl;
-        for (int k=0; k<3; k++) {
-            searchTime(bdmTree, unibnTree, radius, tempRes);
+        for (int k=0; k<4; k++) {
+            searchTime(bdmTree, unibnTree, radius[k], tempRes);
             print(radius,13);print(tempRes[0],12); print(tempRes[1],12); std::cout<<std::endl;
-            radius *= 10;
         }
 
         delete bdmTree;
