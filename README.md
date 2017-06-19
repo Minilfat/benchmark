@@ -28,5 +28,5 @@ make
 
 Run programm with test data from benchmark/points folder
 ```
-./benchmark ../points/10k.csv
+./benchmark ../points/100k.csv
 ```
