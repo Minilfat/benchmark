@@ -122,7 +122,7 @@ int main(int argc, char** argv)
         print("Radius", 13); print("Bdm", 12); print("Unibn", 12); std::cout<<std::endl;
         for (int k=0; k<4; k++) {
             searchTime(bdmTree, unibnTree, radius[k], tempRes);
-            print(radius,13);print(tempRes[0],12); print(tempRes[1],12); std::cout<<std::endl;
+            print(radius[k],13);print(tempRes[0],12); print(tempRes[1],12); std::cout<<std::endl;
         }
 
         delete bdmTree;
